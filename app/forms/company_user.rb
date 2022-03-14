@@ -1,7 +1,9 @@
 class CompanyUser
   include ActiveModel::Model
+  # fields_forで使うため
   attr_accessor :company, :user
 
+  # これによって:company_attributesで情報を持ってこれる。（:userも同様）
   delegate :attributes=, to: :company, prefix: true
   delegate :attributes=, to: :user, prefix: true
 
@@ -12,7 +14,7 @@ class CompanyUser
 
   def save
     return false unless valid?
-
+    # トランザクションの記述
     ActiveRecord::Base.transaction do
       @company.save!
       @user.save!
