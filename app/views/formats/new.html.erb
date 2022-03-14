@@ -1,0 +1,37 @@
+<%= form_with(model: @format, url: formats_path, local: false) do |f| %>
+  <h1>企業情報</h1>
+  <%= f.fields_for :company do |form| %>
+  <%= render 'shared/error_message', object: f.object.company %>
+    <div class="field">
+      <%= form.label :name %>
+      <%= form.text_field :name %>
+    </div>
+    <div class="field">
+      <%= form.label :address %>
+      <%= form.text_field :address %>
+  </div>
+  <% end %>
+  <h1>ユーザー情報</h1>
+  <%= f.fields_for :user do |form| %>
+  <%= render 'shared/error_message', object: f.object.user %>
+    <div class="field">
+      <%= form.label :user_name %>
+      <%= form.text_field :user_name %>
+    </div>
+    <div class="field">
+      <%= form.label :email %>
+      <%= form.text_field :email %>
+    </div>
+    <div class="field">
+      <%= form.label :password %>
+      <%= form.password_field :password %>
+    </div>
+    <div class="field">
+      <%= form.label :password_confirmation %>
+      <%= form.password_field :password_confirmation %>
+    </div>
+  <% end %>
+  <div class="actions">
+    <%= f.submit "登録する" %>
+  </div>
+<% end %>

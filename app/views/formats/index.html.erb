@@ -1,2 +1,13 @@
-<h1>Formats#index</h1>
-<p>Find me in app/views/formats/index.html.erb</p>
+<div class="wrapper">
+  <div class="btn">
+    <%= link_to '登録する', new_format_path %>
+  </div>
+  <div class="formats">
+    <% @formats.each do |format| %>
+      <div class="format">
+        <div class="format-name">企業情報：<%= format.name %>/<%= format.address %></div>
+        <div class="format-name">ユーザー情報：<%= format.user.user_name%>/<%= format.user.email%></div>
+      </div>
+    <% end %>
+  </div>
+</div>
